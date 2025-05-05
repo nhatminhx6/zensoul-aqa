@@ -80,6 +80,7 @@ flutter:
   assets:
     - assets/images/
     - assets/translations/
+    - assets/fishes.json
     - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see

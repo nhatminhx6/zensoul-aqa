@@ -1,35 +1,108 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:template_app_bloc/generated/locale_keys.g.dart';
-import 'package:template_app_bloc/common/helpers/ui_helper.dart';
-import 'package:template_app_bloc/common/widgets/custom_scaffold.dart';
+import 'package:flutter/services.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+class Fish {
+  final int id;
+  final String name;
+  final int price;
+  final String image;
 
-  @override
-  State<HomeView> createState() => _HomeViewState();
+  Fish({
+    required this.id,
+    required this.name,
+    required this.price,
+    required this.image,
+  });
+
+  factory Fish.fromJson(Map<String, dynamic> json) {
+    return Fish(
+      id: json['id'],
+      name: json['name'],
+      price: json['price'],
+      image: json['image'],
+    );
+  }
 }
 
-class _HomeViewState extends State<HomeView> {
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  HomeScreenState createState() => HomeScreenState();
+}
+
+class HomeScreenState extends State<HomeScreen> {
+  List<Fish> fishes = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadFishes();
+  }
+
+  Future<void> loadFishes() async {
+    final String response = await rootBundle.loadString('assets/fishes.json');
+    final List<dynamic> data = json.decode(response);
+    setState(() {
+      fishes = data.map((item) => Fish.fromJson(item)).toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
-      onRefresh: () async {
-        await Future<void>.delayed(const Duration(milliseconds: 1000));
-        setState(() {});
-      },
-      title: LocaleKeys.home,
-      children: List.generate(
-        7,
-        (index) => Container(
-          margin: const EdgeInsets.only(bottom: 10),
-          width: UIHelper.deviceWidth,
-          height: 150,
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primaryContainer,
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
+    return Scaffold(
+      appBar: AppBar(title: const Text('ZenSoul Aqua')),
+      body: fishes.isEmpty
+          ? const Center(child: CircularProgressIndicator())
+          : Padding(
+        padding: const EdgeInsets.all(12),
+        child: GridView.builder(
+          itemCount: fishes.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // 2 item mỗi dòng
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            childAspectRatio: 0.8, // chỉnh tỉ lệ ngang/dọc
           ),
-          child: Center(child: Text(index.toString())),
+          itemBuilder: (context, index) {
+            final fish = fishes[index];
+            return Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
+              elevation: 4,
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.network(
+                        fish.image,
+                        height: 100,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      fish.name,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text('${fish.price} VND',
+                        style: const TextStyle(
+                            fontSize: 14, color: Colors.grey)),
+                  ],
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

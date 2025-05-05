@@ -62,7 +62,7 @@ class _NavigationViewState extends State<NavigationView> {
           case 0:
             return CupertinoTabView(
               builder: (context) {
-                return const HomeView();
+                return const HomeScreen();
               },
             );
           case 1:
@@ -73,7 +73,7 @@ class _NavigationViewState extends State<NavigationView> {
             );
           default:
             tabController.index = 0;
-            return const HomeView();
+            return const HomeScreen();
         }
       },
     );
