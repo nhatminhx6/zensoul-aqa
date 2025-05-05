@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Template App Bloc</string>
+	<string>ZenSoul Aquatic</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -45,13 +45,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>en</string>
 		<string>tr</string>
 	</array>
-
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to your camera to allow you to capture and upload photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
