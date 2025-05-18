@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:template_app_bloc/core/constants/color_constants.dart';
 import 'package:template_app_bloc/generated/locale_keys.g.dart';
-import 'package:template_app_bloc/features/home/view/home_view.dart';
+import 'package:template_app_bloc/features/home/view/home_screen.dart';
 import 'package:template_app_bloc/features/settings/view/settings_view.dart';
 
 class NavigationView extends StatefulWidget {
@@ -62,7 +62,7 @@ class _NavigationViewState extends State<NavigationView> {
           case 0:
             return CupertinoTabView(
               builder: (context) {
-                return const HomeView();
+                return const HomeScreen();
               },
             );
           case 1:
@@ -73,7 +73,7 @@ class _NavigationViewState extends State<NavigationView> {
             );
           default:
             tabController.index = 0;
-            return const HomeView();
+            return const HomeScreen();
         }
       },
     );

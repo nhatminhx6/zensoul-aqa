@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Hồng Mi Bóng Đêm",
+    "price": 120000,
+    "image": "https://thuysinhaqua.com/wp-content/uploads/2024/09/Hong-mi-bong-dem-filamentosa.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Congo Tetra",
+    "price": 95000,
+    "image": "https://roxyaquarium.com.au/app/uploads/2022/03/Congo-Tetra.png"
+  },
+  {
+    "id": 3,
+    "name": "Cầu vòng xanh Indo",
+    "price": 85000,
+    "image": "https://cacanhminhlong.com/wp-content/uploads/2023/02/ca-cau-vong-dep-3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Hoả liên đăng",
+    "price": 85000,
+    "image": "https://tepmauquan3.com/upload/product/z64261313482781f264b7fb107c2be5fbbf19d97309a77-6982.jpg"
+  }
+]
