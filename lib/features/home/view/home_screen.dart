@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import '../../../core/utils/router/routes.dart';
 import '../../../data/models/fish_model.dart';
 import '../../../data/repositories/fish_repository.dart';
 import '../../../core/network/base_mock_client.dart';
@@ -38,11 +40,15 @@ class HomeScreen extends StatelessWidget {
                     final Fish fish = state.fishes[index];
                     return InkWell(
                       onTap: () {
-                        Navigator.push(
+                        /*Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (_) => FishDetailScreen(fish: fish),
                           ),
+                        );*/
+                        context.pushNamed(
+                          Routes.fishDetail.name,
+                          extra: fish,
                         );
                       },
                       child: Card(
