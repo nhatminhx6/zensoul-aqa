@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'fish_list_event.dart';
 import 'fish_list_state.dart';
-import '../../../../data/repositories/fish_repository.dart';
+import '../data/fish_repository.dart';
 
 class FishListBloc extends Bloc<FishListEvent, FishListState> {
   final FishRepository fishRepository;

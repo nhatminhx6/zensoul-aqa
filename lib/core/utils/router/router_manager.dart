@@ -9,7 +9,7 @@ import 'package:template_app_bloc/features/profile/view/profile_view.dart';
 import 'package:template_app_bloc/features/settings/view/settings_view.dart';
 import 'package:template_app_bloc/features/splash/view/splash_view.dart';
 
-import '../../../data/models/fish_model.dart';
+import '../../../features/fish_list/models/fish_model.dart';
 import '../../../features/fish_detail/view/fish_detail_screen.dart';
 import '../../../features/fish_list/fish_list_screen.dart';
 

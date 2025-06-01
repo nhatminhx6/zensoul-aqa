@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../data/models/fish_model.dart';
+import '../../fish_list/models/fish_model.dart';
 import '../bloc/fish_detail_bloc.dart';
 import '../bloc/fish_detail_event.dart';
 import '../bloc/fish_detail_state.dart';

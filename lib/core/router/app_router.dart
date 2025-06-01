@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../data/models/fish_model.dart';
+import '../../features/fish_list/models/fish_model.dart';
 import '../../../features/home/view/home_screen.dart';
 import '../../../features/fish_detail/view/fish_detail_screen.dart';
 import '../../features/fish_list/fish_list_screen.dart';

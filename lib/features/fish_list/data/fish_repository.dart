@@ -1,4 +1,4 @@
-import '../../core/network/base_mock_client.dart';
+import '../../../core/network/base_mock_client.dart';
 import '../models/fish_model.dart';
 
 /// Repository layer to fetch fish data from mock API
@@ -8,7 +8,8 @@ class FishRepository {
   FishRepository(this.client);
 
   Future<List<Fish>> fetchFishes() async {
-    final data = await client.getJsonList('assets/fishes.json');
+    await Future.delayed(const Duration(milliseconds: 1000)); // giả delay gọi API
+    final data = await client.getJsonList('assets/mock-data/fishes.json');
     return data.map((item) => Fish.fromJson(item)).toList();
   }
 }
