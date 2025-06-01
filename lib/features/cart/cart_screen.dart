@@ -37,13 +37,16 @@ class CartScreen extends StatelessWidget {
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Image.network(
-                                  item.imageUrl,
-                                  width: 48,
-                                  height: 48,
-                                  fit: BoxFit.cover,
-                                  errorBuilder: (_, __, ___) =>
-                                  const Icon(Icons.broken_image, size: 48),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8), // hoặc 12 tùy gu
+                                  child: Image.network(
+                                    item.imageUrl,
+                                    width: 48,
+                                    height: 48,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (_, __, ___) =>
+                                    const Icon(Icons.broken_image, size: 48),
+                                  ),
                                 ),
                                 const SizedBox(width: 12),
                                 Expanded(
