@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/home_bloc.dart';
 import '../bloc/home_event.dart';
 import '../bloc/home_state.dart';
+import '../data/category_repository.dart';
 import '../models/category_model.dart';
 import 'package:go_router/go_router.dart';
 import 'package:template_app_bloc/core/utils/router/routes.dart';
@@ -13,7 +14,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => HomeBloc()..add(LoadCategories()),
+      //create: (_) => HomeBloc()..add(LoadCategories()),
+      create: (_) => HomeBloc(CategoryRepository())..add(LoadCategories()),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Zensoul Aqua'),

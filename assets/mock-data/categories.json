@@ -1,0 +1,17 @@
+[
+  {
+    "id": "fish",
+    "name": "Cá cảnh",
+    "imageUrl": "https://thucancakoihikari.com/wp-content/uploads/2024/06/ca-canh-dep-nhat-viet-nam-1.jpg"
+  },
+  {
+    "id": "plants",
+    "name": "Cây thuỷ sinh",
+    "imageUrl": "https://file.hstatic.net/1000100178/file/image001_0e26573450f1486cbbe3bcf6642bfbb5_grande.jpg"
+  },
+  {
+    "id": "equipment",
+    "name": "Thiết bị",
+    "imageUrl": "https://thietbicakoi.com/wp-content/uploads/2024/08/z5370994471205_0d93e7c81c5ddf8a339deec0946a9b27-533x400.jpg"
+  }
+]

@@ -4,8 +4,10 @@ class Assets {
 
   static const String assetsFishes = 'assets/fishes.json';
   static const String imagesDefaultProfilePhoto = 'assets/images/default-profile-photo.png';
+  static const String mockDataCategories = 'assets/mock-data/categories.json';
   static const String translationsEn = 'assets/translations/en.json';
   static const String translationsTr = 'assets/translations/tr.json';
   static const String zensoulAqa = '.env';
+  static const String zensoulAqaAssetsFishes = 'assets/fishes.json';
 
 }
