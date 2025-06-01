@@ -7,6 +7,7 @@ enum Routes {
   profile('/profile'),
   settings('/settings'),
   update_password('/update_password'),
+  fishList('/fish-list'),
   fishDetail('/fish-detail'),
   ;
 

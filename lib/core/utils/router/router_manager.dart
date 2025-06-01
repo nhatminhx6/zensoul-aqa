@@ -11,6 +11,7 @@ import 'package:template_app_bloc/features/splash/view/splash_view.dart';
 
 import '../../../data/models/fish_model.dart';
 import '../../../features/fish_detail/view/fish_detail_screen.dart';
+import '../../../features/fish_list/fish_list_screen.dart';
 
 final class RouterManager {
   RouterManager._();
@@ -51,6 +52,11 @@ final class RouterManager {
         builder: (context, state) => const UpdatePasswordView(),
       ),
       GoRoute(
+        path: Routes.fishList.path,
+        name: Routes.fishList.name, // name là 'fishDetail'
+        builder: (context, state) => const FishListScreen(),
+      ),
+      GoRoute(
         path: Routes.fishDetail.path,
         name: Routes.fishDetail.name, // name là 'fishDetail'
         builder: (context, state) {
@@ -58,6 +64,7 @@ final class RouterManager {
           return FishDetailScreen(fish: fish);
         },
       ),
+
     ],
   );
 }

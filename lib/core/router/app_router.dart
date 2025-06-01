@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../../data/models/fish_model.dart';
 import '../../../features/home/view/home_screen.dart';
 import '../../../features/fish_detail/view/fish_detail_screen.dart';
+import '../../features/fish_list/fish_list_screen.dart';
 
 final GoRouter appRouter = GoRouter(
   routes: [
@@ -10,6 +11,10 @@ final GoRouter appRouter = GoRouter(
       path: '/',
       name: 'home',
       builder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: '/fishList',
+      builder: (context, state) => const FishListScreen(),
     ),
     GoRoute(
       path: '/fish-detail',

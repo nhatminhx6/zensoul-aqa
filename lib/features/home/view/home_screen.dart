@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../bloc/home_bloc.dart';
+import '../bloc/home_event.dart';
+import '../bloc/home_state.dart';
+import '../models/category_model.dart';
 import 'package:go_router/go_router.dart';
-import '../../../core/utils/router/routes.dart';
-import '../../../data/models/fish_model.dart';
-import '../../../data/repositories/fish_repository.dart';
-import '../../../core/network/base_mock_client.dart';
-import '../bloc/fish_list_bloc.dart';
-import '../bloc/fish_list_event.dart';
-import '../bloc/fish_list_state.dart';
-import '../../fish_detail/view/fish_detail_screen.dart';
+import 'package:template_app_bloc/core/utils/router/routes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,90 +13,62 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => FishListBloc(
-        fishRepository: FishRepository(AssetMockClient()),
-      )..add(FetchFishes()),
+      create: (_) => HomeBloc()..add(LoadCategories()),
       child: Scaffold(
-        appBar: AppBar(title: const Text('ZenSoul Aqua')),
-        body: BlocBuilder<FishListBloc, FishListState>(
+        appBar: AppBar(
+          title: const Text('Zensoul Aqua'),
+          centerTitle: true,
+        ),
+        body: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
-            if (state is FishListLoading) {
+            if (state is HomeLoading) {
               return const Center(child: CircularProgressIndicator());
-            } else if (state is FishListLoaded) {
-              return Padding(
-                padding: const EdgeInsets.all(12),
-                child: GridView.builder(
-                  itemCount: state.fishes.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
-                    childAspectRatio: 0.8,
-                  ),
-                  itemBuilder: (context, index) {
-                    final Fish fish = state.fishes[index];
-                    return InkWell(
-                      onTap: () {
-                        /*Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => FishDetailScreen(fish: fish),
-                          ),
-                        );*/
-                        context.pushNamed(
-                          Routes.fishDetail.name,
-                          extra: fish,
-                        );
-                      },
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        elevation: 4,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.network(
-                                  fish.image,
-                                  height: 100,
-                                  width: double.infinity,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                fish.name,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                '${fish.price} VND',
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
+            } else if (state is HomeLoaded) {
+              return GridView.builder(
+                padding: const EdgeInsets.all(16),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                ),
+                itemCount: state.categories.length,
+                itemBuilder: (context, index) {
+                  final category = state.categories[index];
+                  return GestureDetector(
+                    onTap: () {
+                      if (category.id == 'fish') {
+                        context.pushNamed(Routes.fishList.name);
+                      }
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        image: DecorationImage(
+                          image: NetworkImage(category.imageUrl),
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(
+                            Colors.black.withOpacity(0.4),
+                            BlendMode.darken,
                           ),
                         ),
                       ),
-                    );
-                  },
-                ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        category.name,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  );
+                },
               );
-            } else if (state is FishListError) {
-              return Center(child: Text('Lỗi: ${state.message}'));
+            } else {
+              return const Center(child: Text('Failed to load categories.'));
             }
-
-            return const SizedBox(); // fallback
           },
         ),
       ),
