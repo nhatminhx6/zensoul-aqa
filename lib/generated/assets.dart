@@ -5,6 +5,7 @@ class Assets {
   static const String assetsMockDataCategories = 'assets/mock-data/categories.json';
   static const String assetsMockDataFishes = 'assets/mock-data/fishes.json';
   static const String imagesDefaultProfilePhoto = 'assets/images/default-profile-photo.png';
+  static const String mockDataCartItems = 'assets/mock-data/cart_items.json';
   static const String mockDataCategories = 'assets/mock-data/categories.json';
   static const String mockDataFishes = 'assets/mock-data/fishes.json';
   static const String translationsEn = 'assets/translations/en.json';

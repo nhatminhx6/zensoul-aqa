@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../common/widgets/zensoul_app_bar.dart';
 import '../../fish_list/models/fish_model.dart';
 import '../bloc/fish_detail_bloc.dart';
 import '../bloc/fish_detail_event.dart';
@@ -15,7 +16,8 @@ class FishDetailScreen extends StatelessWidget {
     return BlocProvider(
       create: (_) => FishDetailBloc()..add(LoadFishDetail(fish)),
       child: Scaffold(
-        appBar: AppBar(title: Text(fish.name)),
+       // appBar: AppBar(title: Text(fish.name)),
+        appBar: const ZensoulAppBar(title: 'Giỏ hàng'),
         body: BlocBuilder<FishDetailBloc, FishDetailState>(
           builder: (context, state) {
             if (state is FishDetailLoading) {

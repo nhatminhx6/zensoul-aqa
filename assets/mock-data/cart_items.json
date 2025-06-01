@@ -1,0 +1,16 @@
+[
+  {
+    "id": "fish-001",
+    "name": "Betta Fancy",
+    "imageUrl": "https://thucancakoihikari.com/wp-content/uploads/2024/06/ca-canh-dep-nhat-viet-nam-1.jpg",
+    "price": 120000,
+    "quantity": 2
+  },
+  {
+    "id": "plant-001",
+    "name": "Rong la han",
+    "imageUrl": "https://file.hstatic.net/1000100178/file/image001_0e26573450f1486cbbe3bcf6642bfbb5_grande.jpg",
+    "price": 45000,
+    "quantity": 1
+  }
+]

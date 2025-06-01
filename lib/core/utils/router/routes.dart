@@ -9,6 +9,7 @@ enum Routes {
   update_password('/update_password'),
   fishList('/fish-list'),
   fishDetail('/fish-detail'),
+  cart('/cart'),
   ;
 
   final String path;

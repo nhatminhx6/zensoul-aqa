@@ -82,6 +82,7 @@ flutter:
     - assets/translations/
     - assets/mock-data/categories.json
     - assets/mock-data/fishes.json
+    - assets/mock-data/cart_items.json
     - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
